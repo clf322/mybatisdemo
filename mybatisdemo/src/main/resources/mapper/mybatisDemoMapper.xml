@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mybatisdemo.mapper.runoobTblMapper" >
+    <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.runoobTbl">
+      <id column="runoob_id" property="runoobId" jdbcType="BIGINT"/>
+        <result column="runoob_title" property="runoobTitle" jdbcType="VARCHAR"/>
+        <result column="runoob_author" property="runoobAuthor" jdbcType="VARCHAR"/>
+        <result column="submission_date" property="submissionDate" jdbcType="DATE"/>
+    </resultMap>
+   <sql id="Base_Column_List">
+   runoob_id,runoob_title,runoob_author,submission_date
+   </sql>
+   <select id="getAll" resultMap="BaseResultMap">
+       SELECT
+       <include refid="Base_Column_List"/>
+       FROM runoob_tbl
+   </select>
+<select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+SELECT
+<include refid="Base_Column_List"/>
+FROM runoob_tbl
+    WHERE  runoob_id=#{id}
+</select>
+<insert id="insert">
+     INSERT INTO
+            runoob_tbl
+            (runoob_id,runoob_title,runoob_author,submission_date)
+        VALUES
+            (#{id}, #{runoob_title}, #{runoob_author}, #{submission_date})
+</insert>
+    <delete id="delete" parameterType="java.lang.Long">
+DELETE FROM
+             runoob_tbl
+       WHERE
+             xuser_id =#{id}
+
+    </delete>
+
+
+
+
+
+</mapper>
+
+
