@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @SpringBootApplication
 @EnableAutoConfiguration
-@MapperScan(basePackages = "com.example.mybatisdemo.mapper")
+@MapperScan(basePackages = {"com.example.mybatisdemo"})
 public class MybatisdemoApplication {
-	@RequestMapping("hello1")
-	@ResponseBody
-	public String hello(Map<String,Object> map){
-		return "饶你吗1";
-	}
+//	@RequestMapping("hello1")
+//	@ResponseBody
+//	public String hello(Map<String,Object> map){
+//		return "hello1";
+//	}
 	public static void main(String[] args) {
 		SpringApplication.run(MybatisdemoApplication.class, args);
 	}
